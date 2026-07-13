@@ -1,0 +1,799 @@
+- id: 1
+  name: "Abandoned Colony"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 2
+  name: "Alien Ruins"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 3
+  name: "Altered Humanity"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 4
+  name: "Anarchists"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 5
+  name: "Anthropomorphs"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 6
+  name: "Area 51"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 7
+  name: "Badlands World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 8
+  name: "Battleground"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 9
+  name: "Beastmasters"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 10
+  name: "Bubble Cities"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 11
+  name: "Cheap Life"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 12
+  name: "Civil War"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 13
+  name: "Cold War"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 14
+  name: "Colonized Population"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 15
+  name: "Cultural Power"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 16
+  name: "Cybercommunists"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 17
+  name: "Cyborgs"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 18
+  name: "Cyclical Doom"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 19
+  name: "Desert World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 20
+  name: "Doomed World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 21
+  name: "Dying Race"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 22
+  name: "Eugenic Cult"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 23
+  name: "Exchange Consulate"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 24
+  name: "Fallen Hegemon"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 25
+  name: "Feral World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 26
+  name: "Flying Cities"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 27
+  name: "Forbidden Tech"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 28
+  name: "Former Warriors"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 29
+  name: "Freak Geology"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 30
+  name: "Freak Weather"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 31
+  name: "Friendly Foe"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 32
+  name: "Gold Rush"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 33
+  name: "Great Work"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 34
+  name: "Hatred"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 35
+  name: "Heavy Industry"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 36
+  name: "Heavy Mining"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 37
+  name: "Hivemind"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 38
+  name: "Holy War"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 39
+  name: "Hostile Biosphere"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 40
+  name: "Hostile Space"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 41
+  name: "Immortals"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 42
+  name: "Local Specialty"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 43
+  name: "Local Tech"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 44
+  name: "Major Spaceyard"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 45
+  name: "Mandarinate"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 46
+  name: "Mandate Base"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 47
+  name: "Maneaters"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 48
+  name: "Megacorps"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 49
+  name: "Mercenaries"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 50
+  name: "Minimal Contact"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 51
+  name: "Misandry/Misogyny"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 52
+  name: "Night World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 53
+  name: "Nomads"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 54
+  name: "Oceanic World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 55
+  name: "Out of Contact"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 56
+  name: "Outpost World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 57
+  name: "Perimeter Agency"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 58
+  name: "Pilgrimage Site"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 59
+  name: "Pleasure World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 60
+  name: "Police State"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 61
+  name: "Post-Scarcity"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 62
+  name: "Preceptor Archive"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 63
+  name: "Pretech Cultists"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 64
+  name: "Primitive Aliens"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 65
+  name: "Prison Planet"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 66
+  name: "Psionics Academy"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 67
+  name: "Psionics Fear"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 68
+  name: "Psionics Worship"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 69
+  name: "Quarantined World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 70
+  name: "Radioactive World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 71
+  name: "Refugees"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 72
+  name: "Regional Hegemon"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 73
+  name: "Restrictive Laws"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 74
+  name: "Revanchists"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 75
+  name: "Revolutionaries"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 76
+  name: "Rigid Culture"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 77
+  name: "Rising Hegemon"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 78
+  name: "Ritual Combat"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 79
+  name: "Robots"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 80
+  name: "Seagoing Cities"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 81
+  name: "Sealed Menace"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 82
+  name: "Secret Masters"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 83
+  name: "Sectarians"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 84
+  name: "Seismic Instability"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 85
+  name: "Shackled World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 86
+  name: "Societal Despair"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 87
+  name: "Sole Supplier"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 88
+  name: "Taboo Treasure"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 89
+  name: "Terraform Failure"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 90
+  name: "Theocracy"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 91
+  name: "Tomb World"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 92
+  name: "Trade Hub"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 93
+  name: "Tyranny"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 94
+  name: "Unbraked AI"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 95
+  name: "Urbanized Surface"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 96
+  name: "Utopia"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 97
+  name: "Warlords"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 98
+  name: "Xenophiles"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 99
+  name: "Xenophobes"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
+
+- id: 100
+  name: "Zombies"
+  enemies: []
+  friends: []
+  things: []
+  complications: []
+  places: []
