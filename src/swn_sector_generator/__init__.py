@@ -1,0 +1,1 @@
+"""Stars Without Number sector generator."""
