@@ -1,21 +1,66 @@
 - id: 1
-  name: "Abandoned Colony"
-  enemies: []
-  friends: []
-  things: []
-  complications: []
-  places: []
+  name: Abandoned Colony
+  description: >-
+    The world once hosted a colony, whether human or otherwise, until some crisis
+    or natural disaster drove the inhabitants away or killed them off. The colony
+    might have been mercantile in nature, an expedition to extract valuable local
+    resources, or it might have been a reclusive cabal of zealots. The remains of
+    the colony are usually in ruins, and might still be dangerous from the aftermath
+    of whatever destroyed it in the first place.
+  enemies:
+    - Crazed survivors
+    - Ruthless plunderers of the ruins
+    - Automated defense system
+  friends:
+    - Inquisitive stellar archeologist
+    - Heir to the colony's property
+    - Local wanting the place cleaned out and made safe
+  complications:
+    - The local government wants the ruins to remain a secret
+    - The locals claim ownership of it
+    - The colony is crumbling and dangerous to navigate
+  things:
+    - Long-lost property deeds
+    - Relic stolen by the colonists when they left
+    - Historical record of the colonisation attempt
+  places:
+    - Decaying habitation block
+    - Vine-covered town square
+    - Structure buried by an ancient landslide
 
 - id: 2
-  name: "Alien Ruins"
-  enemies: []
-  friends: []
-  things: []
-  complications: []
-  places: []
+  name: Alien Ruins
+  description: >-
+    The world has significant alien ruins present. The locals may or may not permit
+    others to investigate the ruins, and may make it difficult to remove any objects
+    of value without substantial payment. Any surviving ruins with worthwhile salvage
+    almost certainly have some defense or hazard to explain their unplundered state.
+  enemies:
+    - Customs inspector
+    - Worshipper of the ruins
+    - Hidden alien survivor
+  friends:
+    - Curious scholar
+    - Avaricious local resident
+    - Interstellar smuggler
+  complications:
+    - Traps in the ruins
+    - Remote location
+    - Paranoid customs official
+  things:
+    - Precious alien artifacts
+    - Objects left with the remains of a prior unsuccessful expedition
+    - Untranslated alien texts
+    - Untouched hidden ruins
+  places:
+    - Undersea ruin
+    - Orbital ruin
+    - Perfectly preserved alien building
+    - Alien mausoleum
 
 - id: 3
-  name: "Altered Humanity"
+  name: Altered Humanity
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -23,7 +68,8 @@
   places: []
 
 - id: 4
-  name: "Anarchists"
+  name: Anarchists
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -31,7 +77,8 @@
   places: []
 
 - id: 5
-  name: "Anthropomorphs"
+  name: Anthropomorphs
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -39,7 +86,8 @@
   places: []
 
 - id: 6
-  name: "Area 51"
+  name: Area 51
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -47,7 +95,8 @@
   places: []
 
 - id: 7
-  name: "Badlands World"
+  name: Badlands World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -55,7 +104,8 @@
   places: []
 
 - id: 8
-  name: "Battleground"
+  name: Battleground
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -63,7 +113,8 @@
   places: []
 
 - id: 9
-  name: "Beastmasters"
+  name: Beastmasters
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -71,7 +122,8 @@
   places: []
 
 - id: 10
-  name: "Bubble Cities"
+  name: Bubble Cities
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -79,7 +131,8 @@
   places: []
 
 - id: 11
-  name: "Cheap Life"
+  name: Cheap Life
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -87,7 +140,8 @@
   places: []
 
 - id: 12
-  name: "Civil War"
+  name: Civil War
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -95,7 +149,8 @@
   places: []
 
 - id: 13
-  name: "Cold War"
+  name: Cold War
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -103,7 +158,8 @@
   places: []
 
 - id: 14
-  name: "Colonized Population"
+  name: Colonized Population
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -111,7 +167,8 @@
   places: []
 
 - id: 15
-  name: "Cultural Power"
+  name: Cultural Power
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -119,7 +176,8 @@
   places: []
 
 - id: 16
-  name: "Cybercommunists"
+  name: Cybercommunists
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -127,7 +185,8 @@
   places: []
 
 - id: 17
-  name: "Cyborgs"
+  name: Cyborgs
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -135,7 +194,8 @@
   places: []
 
 - id: 18
-  name: "Cyclical Doom"
+  name: Cyclical Doom
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -143,7 +203,8 @@
   places: []
 
 - id: 19
-  name: "Desert World"
+  name: Desert World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -151,7 +212,8 @@
   places: []
 
 - id: 20
-  name: "Doomed World"
+  name: Doomed World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -159,7 +221,8 @@
   places: []
 
 - id: 21
-  name: "Dying Race"
+  name: Dying Race
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -167,7 +230,8 @@
   places: []
 
 - id: 22
-  name: "Eugenic Cult"
+  name: Eugenic Cult
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -175,7 +239,8 @@
   places: []
 
 - id: 23
-  name: "Exchange Consulate"
+  name: Exchange Consulate
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -183,7 +248,8 @@
   places: []
 
 - id: 24
-  name: "Fallen Hegemon"
+  name: Fallen Hegemon
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -191,7 +257,8 @@
   places: []
 
 - id: 25
-  name: "Feral World"
+  name: Feral World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -199,7 +266,8 @@
   places: []
 
 - id: 26
-  name: "Flying Cities"
+  name: Flying Cities
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -207,7 +275,8 @@
   places: []
 
 - id: 27
-  name: "Forbidden Tech"
+  name: Forbidden Tech
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -215,7 +284,8 @@
   places: []
 
 - id: 28
-  name: "Former Warriors"
+  name: Former Warriors
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -223,7 +293,8 @@
   places: []
 
 - id: 29
-  name: "Freak Geology"
+  name: Freak Geology
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -231,7 +302,8 @@
   places: []
 
 - id: 30
-  name: "Freak Weather"
+  name: Freak Weather
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -239,7 +311,8 @@
   places: []
 
 - id: 31
-  name: "Friendly Foe"
+  name: Friendly Foe
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -247,7 +320,8 @@
   places: []
 
 - id: 32
-  name: "Gold Rush"
+  name: Gold Rush
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -255,7 +329,8 @@
   places: []
 
 - id: 33
-  name: "Great Work"
+  name: Great Work
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -263,7 +338,8 @@
   places: []
 
 - id: 34
-  name: "Hatred"
+  name: Hatred
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -271,7 +347,8 @@
   places: []
 
 - id: 35
-  name: "Heavy Industry"
+  name: Heavy Industry
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -279,7 +356,8 @@
   places: []
 
 - id: 36
-  name: "Heavy Mining"
+  name: Heavy Mining
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -287,7 +365,8 @@
   places: []
 
 - id: 37
-  name: "Hivemind"
+  name: Hivemind
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -295,7 +374,8 @@
   places: []
 
 - id: 38
-  name: "Holy War"
+  name: Holy War
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -303,7 +383,8 @@
   places: []
 
 - id: 39
-  name: "Hostile Biosphere"
+  name: Hostile Biosphere
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -311,7 +392,8 @@
   places: []
 
 - id: 40
-  name: "Hostile Space"
+  name: Hostile Space
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -319,7 +401,8 @@
   places: []
 
 - id: 41
-  name: "Immortals"
+  name: Immortals
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -327,7 +410,8 @@
   places: []
 
 - id: 42
-  name: "Local Specialty"
+  name: Local Specialty
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -335,7 +419,8 @@
   places: []
 
 - id: 43
-  name: "Local Tech"
+  name: Local Tech
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -343,7 +428,8 @@
   places: []
 
 - id: 44
-  name: "Major Spaceyard"
+  name: Major Spaceyard
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -351,7 +437,8 @@
   places: []
 
 - id: 45
-  name: "Mandarinate"
+  name: Mandarinate
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -359,7 +446,8 @@
   places: []
 
 - id: 46
-  name: "Mandate Base"
+  name: Mandate Base
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -367,7 +455,8 @@
   places: []
 
 - id: 47
-  name: "Maneaters"
+  name: Maneaters
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -375,7 +464,8 @@
   places: []
 
 - id: 48
-  name: "Megacorps"
+  name: Megacorps
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -383,7 +473,8 @@
   places: []
 
 - id: 49
-  name: "Mercenaries"
+  name: Mercenaries
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -391,7 +482,8 @@
   places: []
 
 - id: 50
-  name: "Minimal Contact"
+  name: Minimal Contact
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -399,7 +491,8 @@
   places: []
 
 - id: 51
-  name: "Misandry/Misogyny"
+  name: Misandry/Misogyny
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -407,7 +500,8 @@
   places: []
 
 - id: 52
-  name: "Night World"
+  name: Night World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -415,7 +509,8 @@
   places: []
 
 - id: 53
-  name: "Nomads"
+  name: Nomads
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -423,7 +518,8 @@
   places: []
 
 - id: 54
-  name: "Oceanic World"
+  name: Oceanic World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -431,7 +527,8 @@
   places: []
 
 - id: 55
-  name: "Out of Contact"
+  name: Out of Contact
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -439,7 +536,8 @@
   places: []
 
 - id: 56
-  name: "Outpost World"
+  name: Outpost World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -447,7 +545,8 @@
   places: []
 
 - id: 57
-  name: "Perimeter Agency"
+  name: Perimeter Agency
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -455,7 +554,8 @@
   places: []
 
 - id: 58
-  name: "Pilgrimage Site"
+  name: Pilgrimage Site
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -463,7 +563,8 @@
   places: []
 
 - id: 59
-  name: "Pleasure World"
+  name: Pleasure World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -471,7 +572,8 @@
   places: []
 
 - id: 60
-  name: "Police State"
+  name: Police State
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -479,7 +581,8 @@
   places: []
 
 - id: 61
-  name: "Post-Scarcity"
+  name: Post-Scarcity
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -487,7 +590,8 @@
   places: []
 
 - id: 62
-  name: "Preceptor Archive"
+  name: Preceptor Archive
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -495,7 +599,8 @@
   places: []
 
 - id: 63
-  name: "Pretech Cultists"
+  name: Pretech Cultists
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -503,7 +608,8 @@
   places: []
 
 - id: 64
-  name: "Primitive Aliens"
+  name: Primitive Aliens
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -511,7 +617,8 @@
   places: []
 
 - id: 65
-  name: "Prison Planet"
+  name: Prison Planet
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -519,7 +626,8 @@
   places: []
 
 - id: 66
-  name: "Psionics Academy"
+  name: Psionics Academy
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -527,7 +635,8 @@
   places: []
 
 - id: 67
-  name: "Psionics Fear"
+  name: Psionics Fear
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -535,7 +644,8 @@
   places: []
 
 - id: 68
-  name: "Psionics Worship"
+  name: Psionics Worship
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -543,7 +653,8 @@
   places: []
 
 - id: 69
-  name: "Quarantined World"
+  name: Quarantined World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -551,7 +662,8 @@
   places: []
 
 - id: 70
-  name: "Radioactive World"
+  name: Radioactive World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -559,7 +671,8 @@
   places: []
 
 - id: 71
-  name: "Refugees"
+  name: Refugees
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -567,7 +680,8 @@
   places: []
 
 - id: 72
-  name: "Regional Hegemon"
+  name: Regional Hegemon
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -575,7 +689,8 @@
   places: []
 
 - id: 73
-  name: "Restrictive Laws"
+  name: Restrictive Laws
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -583,7 +698,8 @@
   places: []
 
 - id: 74
-  name: "Revanchists"
+  name: Revanchists
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -591,7 +707,8 @@
   places: []
 
 - id: 75
-  name: "Revolutionaries"
+  name: Revolutionaries
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -599,7 +716,8 @@
   places: []
 
 - id: 76
-  name: "Rigid Culture"
+  name: Rigid Culture
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -607,7 +725,8 @@
   places: []
 
 - id: 77
-  name: "Rising Hegemon"
+  name: Rising Hegemon
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -615,7 +734,8 @@
   places: []
 
 - id: 78
-  name: "Ritual Combat"
+  name: Ritual Combat
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -623,7 +743,8 @@
   places: []
 
 - id: 79
-  name: "Robots"
+  name: Robots
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -631,7 +752,8 @@
   places: []
 
 - id: 80
-  name: "Seagoing Cities"
+  name: Seagoing Cities
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -639,7 +761,8 @@
   places: []
 
 - id: 81
-  name: "Sealed Menace"
+  name: Sealed Menace
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -647,7 +770,8 @@
   places: []
 
 - id: 82
-  name: "Secret Masters"
+  name: Secret Masters
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -655,7 +779,8 @@
   places: []
 
 - id: 83
-  name: "Sectarians"
+  name: Sectarians
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -663,7 +788,8 @@
   places: []
 
 - id: 84
-  name: "Seismic Instability"
+  name: Seismic Instability
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -671,7 +797,8 @@
   places: []
 
 - id: 85
-  name: "Shackled World"
+  name: Shackled World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -679,7 +806,8 @@
   places: []
 
 - id: 86
-  name: "Societal Despair"
+  name: Societal Despair
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -687,7 +815,8 @@
   places: []
 
 - id: 87
-  name: "Sole Supplier"
+  name: Sole Supplier
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -695,7 +824,8 @@
   places: []
 
 - id: 88
-  name: "Taboo Treasure"
+  name: Taboo Treasure
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -703,7 +833,8 @@
   places: []
 
 - id: 89
-  name: "Terraform Failure"
+  name: Terraform Failure
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -711,7 +842,8 @@
   places: []
 
 - id: 90
-  name: "Theocracy"
+  name: Theocracy
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -719,7 +851,8 @@
   places: []
 
 - id: 91
-  name: "Tomb World"
+  name: Tomb World
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -727,7 +860,8 @@
   places: []
 
 - id: 92
-  name: "Trade Hub"
+  name: Trade Hub
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -735,7 +869,8 @@
   places: []
 
 - id: 93
-  name: "Tyranny"
+  name: Tyranny
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -743,7 +878,8 @@
   places: []
 
 - id: 94
-  name: "Unbraked AI"
+  name: Unbraked AI
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -751,7 +887,8 @@
   places: []
 
 - id: 95
-  name: "Urbanized Surface"
+  name: Urbanized Surface
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -759,7 +896,8 @@
   places: []
 
 - id: 96
-  name: "Utopia"
+  name: Utopia
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -767,7 +905,8 @@
   places: []
 
 - id: 97
-  name: "Warlords"
+  name: Warlords
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -775,7 +914,8 @@
   places: []
 
 - id: 98
-  name: "Xenophiles"
+  name: Xenophiles
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -783,7 +923,8 @@
   places: []
 
 - id: 99
-  name: "Xenophobes"
+  name: Xenophobes
+  description: ''
   enemies: []
   friends: []
   things: []
@@ -791,7 +932,8 @@
   places: []
 
 - id: 100
-  name: "Zombies"
+  name: Zombies
+  description: ''
   enemies: []
   friends: []
   things: []
