@@ -1,6 +1,6 @@
 [project]
 name = "swn-sector-generator"
-version = "0.1.0"
+version = "0.1.1"
 description = "Advanced sector generator for the Stars Without Number TTRPG"
 readme = "README.md"
 
