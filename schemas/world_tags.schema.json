@@ -28,7 +28,7 @@
       },
       "description": {
         "type": "string",
-        "minLength": 0
+        "minLength": 1
       },
       "enemies": {
         "type": "array",
