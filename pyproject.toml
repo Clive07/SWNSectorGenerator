@@ -27,6 +27,16 @@ dev = [
 requires = ["setuptools>=80", "setuptools-scm>=10"]
 build-backend = "setuptools.build_meta"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+    "--import-mode=importlib",
+    "--cov=src/swn_sector_generator",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
