@@ -16,6 +16,7 @@ dev = [
     "jsonschema==4.26.0",
     "mypy==1.18.2",
     "pre-commit==4.3.0",
+    "pydantic==2.13.4",
     "pymarkdownlnt==0.9.39",
     "pytest==9.0.3",
     "pytest-cov==7.0.0",
