@@ -31,11 +31,13 @@ build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+pythonpath = ["tests"]
 addopts = [
     "--import-mode=importlib",
     "--cov=src/swn_sector_generator",
     "--cov-report=term-missing",
     "--cov-fail-under=80",
+    "-vv"
 ]
 
 [tool.setuptools]
