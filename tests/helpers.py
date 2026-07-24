@@ -4,6 +4,8 @@ Shared helper functions for validating raw table data across test files.
 
 from typing import Any
 
+from swn_sector_generator.loading import RawTable, RawEntry
+
 
 def _is_blank_string(value: Any) -> bool:
     """
@@ -20,7 +22,7 @@ def _is_blank_string(value: Any) -> bool:
     return isinstance(value, str) and not value.strip()
 
 
-def _find_null_fields(entry: dict[str, Any]) -> list[str]:
+def _find_null_fields(entry: RawEntry) -> list[str]:
     """
     Find field names whose value is null (YAML's explicit `null` or an
     empty value), regardless of the field's expected type.
@@ -34,7 +36,7 @@ def _find_null_fields(entry: dict[str, Any]) -> list[str]:
     return [key for key, value in entry.items() if value is None]
 
 
-def _find_blank_string_fields(entry: dict[str, Any]) -> list[str]:
+def _find_blank_string_fields(entry: RawEntry) -> list[str]:
     """
     Find field names whose value is a blank or whitespace-only string.
 
@@ -49,7 +51,7 @@ def _find_blank_string_fields(entry: dict[str, Any]) -> list[str]:
     ]
 
 
-def _find_invalid_list_fields(entry: dict[str, Any]) -> list[str]:
+def _find_invalid_list_fields(entry: RawEntry) -> list[str]:
     """
     Find field names holding an empty list, or a list containing a None,
     a blank, or whitespace-only string.
@@ -69,7 +71,7 @@ def _find_invalid_list_fields(entry: dict[str, Any]) -> list[str]:
     return blank_fields
 
 
-def find_invalid_fields(entry: dict[str, Any]) -> list[str]:
+def find_invalid_fields(entry: RawEntry) -> list[str]:
     """
     Find all field names with a null, blank, or empty value.
 
@@ -90,7 +92,7 @@ def find_invalid_fields(entry: dict[str, Any]) -> list[str]:
     )
 
 
-def describe_entry(entry: dict[str, Any], index: int) -> str:
+def describe_entry(entry: RawEntry, index: int) -> str:
     """
     Build a human-readable identifier for a raw entry, for failure messages.
 
@@ -114,3 +116,60 @@ def describe_entry(entry: dict[str, Any], index: int) -> str:
         return f"entry with id {entry_id}"
 
     return f"entry at list index {index} (no usable name or id)"
+
+
+def find_duplicate_field_values(table: RawTable, field: str) -> dict[Any, list[int]]:
+    """
+    Find values in a given field that appear more than once across a table.
+
+    Intended for identity-style fields (e.g. id, name) that are expected
+    to be unique across every entry in the table. Entries missing the
+    field entirely are skipped — a missing required field is already
+    caught by the data quality tests, so this only reports genuine
+    duplicate values among entries that actually have one.
+
+    Args:
+        table: Raw records for one data table.
+        field: The field name to check for cross-entry duplicates.
+
+    Returns:
+        A mapping of each duplicated value to the list indices where it occurs.
+    """
+
+    seen: dict[Any, list[int]] = {}
+    for index, entry in enumerate(table):
+        value = entry.get(field)
+        if value is None:
+            continue
+        seen.setdefault(value, []).append(index)
+
+    return {value: indices for value, indices in seen.items() if len(indices) > 1}
+
+
+def find_duplicate_list_items(entry: RawEntry) -> dict[str, list[Any]]:
+    """
+    Find list fields where the same non-null item appears more than once
+    within that single entry's own list.
+
+    Duplicate values across different entries (e.g. two world tags both
+    listing "Pirates" as an enemy) are expected and not checked here.
+    Null/None entries are skipped — those are already caught by the data
+    quality tests, so this only reports genuine repeated real values.
+
+    Args:
+        entry: A single raw table record.
+
+    Returns:
+        A mapping of each list field to the duplicated items found in it.
+    """
+    
+    duplicates: dict[str, list[Any]] = {}
+    for key, value in entry.items():
+        if not isinstance(value, list):
+            continue
+        real_items = [item for item in value if item is not None]
+        seen_items = [item for item in real_items if real_items.count(item) > 1]
+        if seen_items:
+            duplicates[key] = list(dict.fromkeys(seen_items))
+
+    return duplicates

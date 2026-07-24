@@ -6,6 +6,7 @@ from typing import Any
 
 
 # A YAML table file is always a list of unvalidated record dicts.
-RawTable = list[dict[str, Any]]
+RawEntry = dict[str, Any]
+RawTable = list[RawEntry]
 # A JSON Schema file is always a single dict document.
 RawSchema = dict[str, Any]

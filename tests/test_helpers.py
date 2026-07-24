@@ -9,6 +9,8 @@ from helpers import (
     _is_blank_string,
     describe_entry,
     find_invalid_fields,
+    find_duplicate_field_values,
+    find_duplicate_list_items,
 )
 
 
@@ -119,3 +121,86 @@ def test_describe_entry_falls_back_to_index_when_name_and_id_missing() -> None:
     """
 
     assert describe_entry({}, index=3) == "entry at list index 3 (no usable name or id)"
+
+
+def test_find_duplicate_field_values_detects_duplicates() -> None:
+    """
+    Values appearing more than once in a field should be reported with their indices.
+    """
+
+    table = [{"id": 1, "name": "Feral World"}, {"id": 2, "name": "Feral World"}]
+
+    assert find_duplicate_field_values(table, "name") == {"Feral World": [0, 1]}
+
+
+def test_find_duplicate_field_values_ignores_unique_values() -> None:
+    """
+    Values appearing only once should not be reported.
+    """
+
+    table = [{"id": 1, "name": "Feral World"}, {"id": 2, "name": "Alien Ruins"}]
+
+    assert find_duplicate_field_values(table, "name") == {}
+
+
+def test_find_duplicate_field_values_ignores_missing_field() -> None:
+    """
+    Entries missing the field entirely should not be treated as duplicates
+    of each other — a missing required field is already caught by the
+    data quality tests, so the function only reports real duplicate values.
+    """
+
+    table = [{"id": 1}, {"id": 2}]
+
+    assert find_duplicate_field_values(table, "name") == {}
+
+
+def test_find_duplicate_list_items_detects_repeated_entry() -> None:
+    """
+    An item repeated within a single entry's own list should be reported.
+    """
+
+    entry = {"enemies": ["Pirates", "Pirates", "Rebels"]}
+
+    assert find_duplicate_list_items(entry) == {"enemies": ["Pirates"]}
+
+
+def test_find_duplicate_list_items_ignores_unique_entries() -> None:
+    """
+    A list with no repeated items should not be reported.
+    """
+
+    entry = {"enemies": ["Pirates", "Rebels"]}
+
+    assert find_duplicate_list_items(entry) == {}
+
+
+def test_find_duplicate_list_items_ignores_non_list_fields() -> None:
+    """
+    Non-list fields should be skipped entirely, even if their values repeat.
+    """
+
+    entry = {"name": "Feral World", "id": 1, "nickname": "Feral World"}
+
+    assert find_duplicate_list_items(entry) == {}
+
+
+def test_find_duplicate_list_items_checks_each_list_field_independently() -> None:
+    """
+    Duplicates should be reported per field, only for fields that actually have them.
+    """
+
+    entry = {"enemies": ["Pirates", "Pirates"], "friends": ["Royal Navy", "Pirates"]}
+
+    assert find_duplicate_list_items(entry) == {"enemies": ["Pirates"]}
+
+
+def test_find_duplicate_list_items_ignores_null_entries() -> None:
+    """
+    Null entries within a list should not be treated as duplicates of each
+    other — that's already caught by the data quality tests, so this function
+    only reports repeated real values.
+    """
+    
+    entry = {"enemies": ["Pirates", None, None]}
+    assert find_duplicate_list_items(entry) == {}
