@@ -9,6 +9,7 @@ from helpers import (describe_entry,
                      find_invalid_fields,
                      find_duplicate_field_values,
                      find_duplicate_list_items,
+                     find_untrimmed_string_fields
                      )
 from swn_sector_generator.loading import RawTable
 
@@ -53,6 +54,7 @@ def test_table_has_no_duplicate_identity_values(
 ) -> None:
     """
     Verify no identity field (e.g. id, name) has duplicate values across the table.
+    String values are compared case-insensitive.
 
     Args:
         table_fixture: Name of the fixture providing raw table data.
@@ -83,6 +85,7 @@ def test_table_entries_have_no_duplicate_list_items(
 ) -> None:
     """
     Verify no entry's own list fields contain repeated items within themselves.
+    String values are compared case-insensitive.
 
     Args:
         table_fixture: Name of the fixture providing raw table data.
@@ -102,3 +105,29 @@ def test_table_entries_have_no_duplicate_list_items(
                                  f"{table_fixture} YAML data file with "
                                  "duplicate list items."
                                  )
+
+
+@pytest.mark.parametrize("table_fixture", TABLE_FIXTURES)
+def test_table_has_no_untrimmed_string_fields(
+    table_fixture: str, request: pytest.FixtureRequest
+) -> None:
+    """
+    Verify that no entry has a string field with leading or trailing whitespace.
+
+    Args:
+        table_fixture: Name of the fixture providing raw table data.
+        request: Pytest's fixture request, used to resolve the fixture by
+            name so this test runs generically across tables.
+    """
+    table: RawTable = request.getfixturevalue(table_fixture)
+
+    problem_entries = {
+        describe_entry(tag, index): fields
+        for index, tag in enumerate(table)
+        if (fields := find_untrimmed_string_fields(tag))
+    }
+
+    assert not problem_entries, (
+        f"{table_fixture} YAML data file has fields with leading or "
+        "trailing whitespace that should be trimmed."
+    )

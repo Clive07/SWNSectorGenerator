@@ -3,6 +3,7 @@ Tests for the shared validation helper functions in helpers.py.
 """
 
 from helpers import (
+    _normalize_for_comparison,
     _find_blank_string_fields,
     _find_invalid_list_fields,
     _find_null_fields,
@@ -11,7 +12,26 @@ from helpers import (
     find_invalid_fields,
     find_duplicate_field_values,
     find_duplicate_list_items,
+    find_untrimmed_string_fields,
 )
+
+
+def test_normalize_for_comparison_casefolds_strings() -> None:
+    """
+    Strings should be case-folded for comparison.
+    """
+    assert _normalize_for_comparison("Feral World") == "feral world"
+    assert _normalize_for_comparison("FERAL WORLD") == "feral world"
+    assert _normalize_for_comparison("feral world") == "feral world"
+
+
+def test_normalize_for_comparison_leaves_non_strings_unchanged() -> None:
+    """
+    Non-string values should be returned as-is, since case doesn't apply to them.
+    """
+    assert _normalize_for_comparison(7) == 7
+    assert _normalize_for_comparison(None) is None
+    assert _normalize_for_comparison([1, 2]) == [1, 2]
 
 
 def test_is_blank_string_detects_blank_and_whitespace_only() -> None:
@@ -125,21 +145,29 @@ def test_describe_entry_falls_back_to_index_when_name_and_id_missing() -> None:
 
 def test_find_duplicate_field_values_detects_duplicates() -> None:
     """
-    Values appearing more than once in a field should be reported with their indices.
+    Values appearing more than once in a field should be reported with their original value and index.
     """
-
     table = [{"id": 1, "name": "Feral World"}, {"id": 2, "name": "Feral World"}]
+    assert find_duplicate_field_values(table, "name") == {
+        "feral world": [("Feral World", 0), ("Feral World", 1)]
+    }
 
-    assert find_duplicate_field_values(table, "name") == {"Feral World": [0, 1]}
+
+def test_find_duplicate_field_values_detects_case_insensitive_duplicates() -> None:
+    """
+    Values differing only by case should be treated as duplicates.
+    """
+    table = [{"id": 1, "name": "Feral World"}, {"id": 2, "name": "feral world"}]
+    assert find_duplicate_field_values(table, "name") == {
+        "feral world": [("Feral World", 0), ("feral world", 1)]
+    }
 
 
 def test_find_duplicate_field_values_ignores_unique_values() -> None:
     """
     Values appearing only once should not be reported.
     """
-
     table = [{"id": 1, "name": "Feral World"}, {"id": 2, "name": "Alien Ruins"}]
-
     assert find_duplicate_field_values(table, "name") == {}
 
 
@@ -147,31 +175,41 @@ def test_find_duplicate_field_values_ignores_missing_field() -> None:
     """
     Entries missing the field entirely should not be treated as duplicates
     of each other — a missing required field is already caught by the
-    data quality tests, so the function only reports real duplicate values.
+    data quality tests, so this test only reports real duplicate values.
     """
-
     table = [{"id": 1}, {"id": 2}]
-
     assert find_duplicate_field_values(table, "name") == {}
+
+
+def test_find_duplicate_field_values_works_on_non_string_fields() -> None:
+    """
+    Non-string values (e.g. int ids) should still be compared and detected correctly.
+    """
+    table = [{"id": 7, "name": "A"}, {"id": 7, "name": "B"}]
+    assert find_duplicate_field_values(table, "id") == {7: [(7, 0), (7, 1)]}
 
 
 def test_find_duplicate_list_items_detects_repeated_entry() -> None:
     """
     An item repeated within a single entry's own list should be reported.
     """
-
     entry = {"enemies": ["Pirates", "Pirates", "Rebels"]}
-
     assert find_duplicate_list_items(entry) == {"enemies": ["Pirates"]}
+
+
+def test_find_duplicate_list_items_detects_case_insensitive_repeats() -> None:
+    """
+    Items differing only by case should be treated as duplicates.
+    """
+    entry = {"enemies": ["Pirates", "pirates", "Rebels"]}
+    assert find_duplicate_list_items(entry) == {"enemies": ["Pirates", "pirates"]}
 
 
 def test_find_duplicate_list_items_ignores_unique_entries() -> None:
     """
     A list with no repeated items should not be reported.
     """
-
     entry = {"enemies": ["Pirates", "Rebels"]}
-
     assert find_duplicate_list_items(entry) == {}
 
 
@@ -179,9 +217,7 @@ def test_find_duplicate_list_items_ignores_non_list_fields() -> None:
     """
     Non-list fields should be skipped entirely, even if their values repeat.
     """
-
     entry = {"name": "Feral World", "id": 1, "nickname": "Feral World"}
-
     assert find_duplicate_list_items(entry) == {}
 
 
@@ -189,18 +225,55 @@ def test_find_duplicate_list_items_checks_each_list_field_independently() -> Non
     """
     Duplicates should be reported per field, only for fields that actually have them.
     """
-
     entry = {"enemies": ["Pirates", "Pirates"], "friends": ["Royal Navy", "Pirates"]}
-
     assert find_duplicate_list_items(entry) == {"enemies": ["Pirates"]}
 
 
 def test_find_duplicate_list_items_ignores_null_entries() -> None:
     """
     Null entries within a list should not be treated as duplicates of each
-    other — that's already caught by the data quality tests, so this function
+    other — that's caught by other tests, so this test
     only reports repeated real values.
     """
-    
     entry = {"enemies": ["Pirates", None, None]}
     assert find_duplicate_list_items(entry) == {}
+
+
+def test_find_untrimmed_string_fields_detects_untrimmed_strings() -> None:
+    """
+    Untrimmed string fields should be reported as untrimmed strings. whether
+    the value is a plain string or a string inside a list, and regardless
+    of where in a list the untrimmed item appears.
+    """
+
+    entry = {
+        "name": " Feral World",
+        "nickname": "Alien Ruins ",
+        "enemies": ["Pirates "],
+        "friends": ["Turncoat Pirate", " Royal Navy"],
+    }
+    assert find_untrimmed_string_fields(entry) == ["name", "nickname", "enemies", "friends"]
+
+
+def test_find_untrimmed_string_fields_ignores_clean_and_blank_strings() -> None:
+    """
+    Clean strings, blank/whitespace-only strings, non-string fields, and
+    blank list items should not be reported as untrimmed.
+    """
+    entry = {
+        "name": "Feral World",
+        "description": "",
+        "notes": "   ",
+        "id": 1,
+        "enemies": ["Pirates", ""],
+    }
+    assert find_untrimmed_string_fields(entry) == []
+
+
+def test_find_untrimmed_string_fields_reports_list_field_only_once() -> None:
+    """
+    A list field with multiple untrimmed items should still only appear
+    once in the result, not once per untrimmed item found.
+    """
+    entry = {"enemies": ["Pirates ", " Rebels", "Scavengers "]}
+    assert find_untrimmed_string_fields(entry) == ["enemies"]

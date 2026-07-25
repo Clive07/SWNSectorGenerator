@@ -71,6 +71,23 @@ def _find_invalid_list_fields(entry: RawEntry) -> list[str]:
     return blank_fields
 
 
+def _normalize_for_comparison(value: Any) -> Any:
+    """
+    Normalise a value for case-insensitive comparison.
+
+    Strings are case-folded so values differing only by capitalisation
+    (e.g. "Feral World" vs "feral world") compare as equal. Non-string
+    values are returned unchanged, since case doesn't apply to them.
+
+    Args:
+        value: The value to normalise.
+
+    Returns:
+        The case-folded string, or the original value if not a string.
+    """
+    return value.casefold() if isinstance(value, str) else value
+
+
 def find_invalid_fields(entry: RawEntry) -> list[str]:
     """
     Find all field names with a null, blank, or empty value.
@@ -118,32 +135,31 @@ def describe_entry(entry: RawEntry, index: int) -> str:
     return f"entry at list index {index} (no usable name or id)"
 
 
-def find_duplicate_field_values(table: RawTable, field: str) -> dict[Any, list[int]]:
+def find_duplicate_field_values(table: RawTable, field: str) -> dict[Any, list[tuple[Any, int]]]:
     """
     Find values in a given field that appear more than once across a table.
 
-    Intended for identity-style fields (e.g. id, name) that are expected
-    to be unique across every entry in the table. Entries missing the
-    field entirely are skipped — a missing required field is already
-    caught by the data quality tests, so this only reports genuine
-    duplicate values among entries that actually have one.
+    String values are compared case-insensitively, since a capitalisation-
+    only difference (e.g. "Feral World" vs "feral world") almost always
+    indicates a typo rather than two intentionally distinct entries.
+    Entries missing the field are skipped — already caught elsewhere.
 
     Args:
         table: Raw records for one data table.
         field: The field name to check for cross-entry duplicates.
 
     Returns:
-        A mapping of each duplicated value to the list indices where it occurs.
+        A mapping of each duplicated value to a list of (original value,
+        index) pairs where it occurs.
     """
-
-    seen: dict[Any, list[int]] = {}
+    seen: dict[Any, list[tuple[Any, int]]] = {}
     for index, entry in enumerate(table):
         value = entry.get(field)
         if value is None:
             continue
-        seen.setdefault(value, []).append(index)
+        seen.setdefault(_normalize_for_comparison(value), []).append((value, index))
 
-    return {value: indices for value, indices in seen.items() if len(indices) > 1}
+    return {key: entries for key, entries in seen.items() if len(entries) > 1}
 
 
 def find_duplicate_list_items(entry: RawEntry) -> dict[str, list[Any]]:
@@ -151,25 +167,66 @@ def find_duplicate_list_items(entry: RawEntry) -> dict[str, list[Any]]:
     Find list fields where the same non-null item appears more than once
     within that single entry's own list.
 
-    Duplicate values across different entries (e.g. two world tags both
-    listing "Pirates" as an enemy) are expected and not checked here.
-    Null/None entries are skipped — those are already caught by the data
-    quality tests, so this only reports genuine repeated real values.
+    Items are compared case-insensitively, since a capitalisation-only
+    difference almost always indicates a typo rather than two distinct
+    values.
+
+    Duplicate values across different entries (e.g. two world
+    tags both listing "Pirates" as an enemy) are not checked here.
+
+    None/Nulls values are also not checked here due to other tests
+    checking for this.
 
     Args:
         entry: A single raw table record.
 
     Returns:
-        A mapping of each list field to the duplicated items found in it.
+        A mapping of each list field to the original duplicated items
+        found in it.
     """
-    
     duplicates: dict[str, list[Any]] = {}
     for key, value in entry.items():
         if not isinstance(value, list):
             continue
         real_items = [item for item in value if item is not None]
-        seen_items = [item for item in real_items if real_items.count(item) > 1]
-        if seen_items:
-            duplicates[key] = list(dict.fromkeys(seen_items))
 
+        seen_by_normalized: dict[Any, list[Any]] = {}
+        for item in real_items:
+            seen_by_normalized.setdefault(_normalize_for_comparison(item), []).append(item)
+
+        duplicated_originals = [
+            original
+            for originals in seen_by_normalized.values()
+            if len(originals) > 1
+            for original in dict.fromkeys(originals)
+        ]
+        if duplicated_originals:
+            duplicates[key] = duplicated_originals
     return duplicates
+
+
+def find_untrimmed_string_fields(entry: RawEntry) -> list[str]:
+    """
+    Find fields holding a string with leading or trailing whitespace.
+
+    Checks both plain string fields and strings inside list fields.
+    Ignores strings that are blank once stripped, since that's already
+    covered by find_invalid_fields.
+
+    Args:
+        entry: A single raw table record.
+
+    Returns:
+        Names of fields containing an untrimmed string value.
+    """
+
+    untrimmed_fields = []
+    for key, value in entry.items():
+        if isinstance(value, str) and value.strip() and value != value.strip():
+            untrimmed_fields.append(key)
+        elif isinstance(value, list) and any(
+            isinstance(item, str) and item.strip() and item != item.strip() for item in value
+        ):
+            untrimmed_fields.append(key)
+
+    return untrimmed_fields
