@@ -58,11 +58,10 @@ def test_find_null_fields_detects_none() -> None:
     """
     A None value should be detected regardless of the field's expected type.
     """
-    
     entry = {"name": "Valid", "description": None, "enemies": None}
     assert _find_null_fields(entry) == ["description", "enemies"]
 
-    
+
 def test_find_blank_string_fields_detects_blank_and_whitespace_only() -> None:
     """
     Blank and whitespace-only string fields should both be detected.
@@ -253,7 +252,12 @@ def test_find_untrimmed_string_fields_detects_untrimmed_strings() -> None:
         "enemies": ["Pirates "],
         "friends": ["Turncoat Pirate", " Royal Navy"],
     }
-    assert find_untrimmed_string_fields(entry) == ["name", "nickname", "enemies", "friends"]
+    assert find_untrimmed_string_fields(entry) == [
+        "name",
+        "nickname",
+        "enemies",
+        "friends",
+    ]
 
 
 def test_find_untrimmed_string_fields_ignores_clean_and_blank_strings() -> None:

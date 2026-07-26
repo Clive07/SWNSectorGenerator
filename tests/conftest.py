@@ -16,8 +16,6 @@ TABLES_DIR = PROJECT_DIR / "src" / "swn_sector_generator" / "resources" / "table
 SCHEMAS_DIR = PROJECT_DIR / "schemas"
 
 
-
-
 def _load_yaml_table(file_path: Path) -> RawTable:
     """
     Load a YAML data table from disk.

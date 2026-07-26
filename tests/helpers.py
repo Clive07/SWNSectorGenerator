@@ -46,9 +46,7 @@ def _find_blank_string_fields(entry: RawEntry) -> list[str]:
     Returns:
         Names of string fields holding an empty or whitespace-only value.
     """
-    return [
-        key for key, value in entry.items() if _is_blank_string(value)
-    ]
+    return [key for key, value in entry.items() if _is_blank_string(value)]
 
 
 def _find_invalid_list_fields(entry: RawEntry) -> list[str]:
@@ -101,7 +99,7 @@ def find_invalid_fields(entry: RawEntry) -> list[str]:
     Returns:
         Names of fields with no meaningful value, regardless of type.
     """
-    
+
     return (
         _find_null_fields(entry)
         + _find_blank_string_fields(entry)
@@ -135,7 +133,9 @@ def describe_entry(entry: RawEntry, index: int) -> str:
     return f"entry at list index {index} (no usable name or id)"
 
 
-def find_duplicate_field_values(table: RawTable, field: str) -> dict[Any, list[tuple[Any, int]]]:
+def find_duplicate_field_values(
+    table: RawTable, field: str
+) -> dict[Any, list[tuple[Any, int]]]:
     """
     Find values in a given field that appear more than once across a table.
 
@@ -192,7 +192,9 @@ def find_duplicate_list_items(entry: RawEntry) -> dict[str, list[Any]]:
 
         seen_by_normalized: dict[Any, list[Any]] = {}
         for item in real_items:
-            seen_by_normalized.setdefault(_normalize_for_comparison(item), []).append(item)
+            seen_by_normalized.setdefault(_normalize_for_comparison(item), []).append(
+                item
+            )
 
         duplicated_originals = [
             original
@@ -225,7 +227,8 @@ def find_untrimmed_string_fields(entry: RawEntry) -> list[str]:
         if isinstance(value, str) and value.strip() and value != value.strip():
             untrimmed_fields.append(key)
         elif isinstance(value, list) and any(
-            isinstance(item, str) and item.strip() and item != item.strip() for item in value
+            isinstance(item, str) and item.strip() and item != item.strip()
+            for item in value
         ):
             untrimmed_fields.append(key)
 
@@ -250,7 +253,9 @@ def find_id_range_gaps(table: RawTable) -> dict[str, list[int]]:
         each a sorted list. Empty lists are omitted from the result.
     """
     expected_ids = set(range(1, len(table) + 1))
-    actual_ids = {entry.get("id") for entry in table if isinstance(entry.get("id"), int)}
+    actual_ids = {
+        entry.get("id") for entry in table if isinstance(entry.get("id"), int)
+    }
 
     issues = {}
     if missing := sorted(expected_ids - actual_ids):

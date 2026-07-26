@@ -5,13 +5,14 @@ meaningful value (null, blank, or empty), regardless of schema.
 
 import pytest
 
-from helpers import (describe_entry,
-                     find_invalid_fields,
-                     find_duplicate_field_values,
-                     find_duplicate_list_items,
-                     find_untrimmed_string_fields,
-                     find_id_range_gaps,
-                     )
+from helpers import (
+    describe_entry,
+    find_invalid_fields,
+    find_duplicate_field_values,
+    find_duplicate_list_items,
+    find_untrimmed_string_fields,
+    find_id_range_gaps,
+)
 from swn_sector_generator.loading import RawTable
 
 TABLE_FIXTURES = [
@@ -51,7 +52,7 @@ def test_table_has_no_invalid_fields(
 
 @pytest.mark.parametrize("table_fixture, identity_fields", TABLE_IDENTITY_FIELDS)
 def test_table_has_no_duplicate_identity_values(
-        table_fixture: str, identity_fields: list[str], request: pytest.FixtureRequest
+    table_fixture: str, identity_fields: list[str], request: pytest.FixtureRequest
 ) -> None:
     """
     Verify no identity field (e.g. id, name) has duplicate values across the table.
@@ -82,7 +83,7 @@ def test_table_has_no_duplicate_identity_values(
 
 @pytest.mark.parametrize("table_fixture", TABLE_FIXTURES)
 def test_table_entries_have_no_duplicate_list_items(
-        table_fixture: str, request: pytest.FixtureRequest
+    table_fixture: str, request: pytest.FixtureRequest
 ) -> None:
     """
     Verify no entry's own list fields contain repeated items within themselves.
@@ -102,10 +103,11 @@ def test_table_entries_have_no_duplicate_list_items(
         if (dupes := find_duplicate_list_items(tag))
     }
 
-    assert not problem_entries, ("There are one or more entries in the "
-                                 f"{table_fixture} YAML data file with "
-                                 "duplicate list items."
-                                 )
+    assert not problem_entries, (
+        "There are one or more entries in the "
+        f"{table_fixture} YAML data file with "
+        "duplicate list items."
+    )
 
 
 @pytest.mark.parametrize("table_fixture", TABLE_FIXTURES)
