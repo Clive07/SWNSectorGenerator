@@ -230,3 +230,31 @@ def find_untrimmed_string_fields(entry: RawEntry) -> list[str]:
             untrimmed_fields.append(key)
 
     return untrimmed_fields
+
+
+def find_id_range_gaps(table: RawTable) -> dict[str, list[int]]:
+    """
+    Find problems with the expected set of ids for this table.
+
+    Assumes ids should collectively cover exactly 1 through the table's
+    length, with no gaps and nothing outside that range. This does not
+    check whether entries appear in id order within the file - that's a
+    separate concern.
+
+    Args:
+        table: Raw records for one data table.
+
+    Returns:
+        A dict with "missing" (expected ids not found in the table) and
+        "unexpected" (ids present that fall outside the expected range),
+        each a sorted list. Empty lists are omitted from the result.
+    """
+    expected_ids = set(range(1, len(table) + 1))
+    actual_ids = {entry.get("id") for entry in table if isinstance(entry.get("id"), int)}
+
+    issues = {}
+    if missing := sorted(expected_ids - actual_ids):
+        issues["missing"] = missing
+    if unexpected := sorted(actual_ids - expected_ids):
+        issues["unexpected"] = unexpected
+    return issues

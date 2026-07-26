@@ -13,6 +13,7 @@ from helpers import (
     find_duplicate_field_values,
     find_duplicate_list_items,
     find_untrimmed_string_fields,
+    find_id_range_gaps,
 )
 
 
@@ -277,3 +278,46 @@ def test_find_untrimmed_string_fields_reports_list_field_only_once() -> None:
     """
     entry = {"enemies": ["Pirates ", " Rebels", "Scavengers "]}
     assert find_untrimmed_string_fields(entry) == ["enemies"]
+
+
+def test_find_id_range_gaps_detects_missing_and_unexpected() -> None:
+    """
+    A mistyped id should surface as one missing value and one unexpected value.
+    """
+    table = [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 6}, {"id": 5}]
+    assert find_id_range_gaps(table) == {"missing": [4], "unexpected": [6]}
+
+
+def test_find_id_range_gaps_ignores_correct_sequence() -> None:
+    """
+    A table with ids exactly 1..N should report no issues.
+    """
+    table = [{"id": 1}, {"id": 2}, {"id": 3}]
+    assert find_id_range_gaps(table) == {}
+
+
+def test_find_id_range_gaps_ignores_duplicate_ids() -> None:
+    """
+    Duplicate ids aren't this function's concern - they're already caught
+    by find_duplicate_field_values - so a duplicate shouldn't itself be
+    reported as an issue, only whatever id ends up genuinely missing
+    because of it.
+    """
+    table = [{"id": 1}, {"id": 2}, {"id": 2}]
+    assert find_id_range_gaps(table) == {"missing": [3]}
+
+
+def test_find_id_range_gaps_ignores_non_integer_ids() -> None:
+    """
+    Noninteger id values should be ignored, not counted as valid or invalid.
+    """
+    table = [{"id": 1}, {"id": "two"}, {"id": 3}]
+    assert find_id_range_gaps(table) == {"missing": [2]}
+
+
+def test_find_id_range_gaps_ignores_missing_id_field() -> None:
+    """
+    An entry with no id field at all should be ignored, not treated as unexpected.
+    """
+    table = [{"id": 1}, {}, {"id": 3}]
+    assert find_id_range_gaps(table) == {"missing": [2]}

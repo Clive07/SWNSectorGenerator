@@ -9,7 +9,8 @@ from helpers import (describe_entry,
                      find_invalid_fields,
                      find_duplicate_field_values,
                      find_duplicate_list_items,
-                     find_untrimmed_string_fields
+                     find_untrimmed_string_fields,
+                     find_id_range_gaps,
                      )
 from swn_sector_generator.loading import RawTable
 
@@ -130,4 +131,27 @@ def test_table_has_no_untrimmed_string_fields(
     assert not problem_entries, (
         f"{table_fixture} YAML data file has fields with leading or "
         "trailing whitespace that should be trimmed."
+    )
+
+
+@pytest.mark.parametrize("table_fixture", TABLE_FIXTURES)
+def test_table_has_no_id_range_gaps(
+    table_fixture: str, request: pytest.FixtureRequest
+) -> None:
+    """
+    Verify a table's ids collectively cover 1 to its length, with
+    nothing missing and nothing outside that expected range.
+
+    Args:
+        table_fixture: Name of the fixture providing raw table data.
+        request: Pytest's fixture request, used to resolve the fixture by
+            name so this test runs generically across tables.
+    """
+    table: RawTable = request.getfixturevalue(table_fixture)
+
+    issues = find_id_range_gaps(table)
+
+    assert not issues, (
+        f"{table_fixture} YAML data file has id range issues - check "
+        "for missing or mistyped id values."
     )
