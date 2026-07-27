@@ -13,8 +13,10 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "git-cliff==2.13.1",
+    "jsonschema==4.26.0",
     "mypy==1.18.2",
     "pre-commit==4.3.0",
+    "pydantic==2.13.4",
     "pymarkdownlnt==0.9.39",
     "pytest==9.0.3",
     "pytest-cov==7.0.0",
@@ -25,6 +27,18 @@ dev = [
 [build-system]
 requires = ["setuptools>=80", "setuptools-scm>=10"]
 build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["tests"]
+addopts = [
+    "--import-mode=importlib",
+    "--cov=src/swn_sector_generator",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+    "-vv"
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
