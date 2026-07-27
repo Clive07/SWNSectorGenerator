@@ -9,6 +9,7 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+src/swn_sector_generator/_version.py
 
 # Test / coverage
 .pytest_cache/

@@ -1,6 +1,6 @@
 [project]
 name = "swn-sector-generator"
-version = "0.1.1"
+dynamic = ["version"]
 description = "Advanced sector generator for the Stars Without Number TTRPG"
 readme = "README.md"
 
@@ -12,20 +12,25 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "git-cliff==2.13.1",
     "mypy==1.18.2",
     "pre-commit==4.3.0",
     "pymarkdownlnt==0.9.39",
     "pytest==9.0.3",
     "pytest-cov==7.0.0",
     "ruff==0.13.0",
+    "setuptools-scm==10.2.1",
 ]
 
 [build-system]
-requires = ["setuptools>=80"]
+requires = ["setuptools>=80", "setuptools-scm>=10"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
+
+[tool.setuptools_scm]
+version_file = "src/swn_sector_generator/_version.py"
 
 [tool.setuptools.packages.find]
 where = ["src"]
