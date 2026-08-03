@@ -29,6 +29,9 @@ dev = [
     "yamllint~=1.38.0",
 ]
 
+[tool.coverage.run]
+omit = ["*/_version.py"]
+
 [tool.pymarkdown]
 plugins.MD013.enabled = true
 plugins.MD013.code-blocks = false
