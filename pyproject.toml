@@ -4,28 +4,29 @@ dynamic = ["version"]
 description = "Advanced sector generator for the Stars Without Number TTRPG"
 readme = "README.md"
 
-requires-python = ">=3.14"
+requires-python = "~=3.14"
 
 dependencies = [
-    "PyYAML==6.0.3",
+    "PyYAML~=6.0.3",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "git-cliff==2.13.1",
-    "jsonschema==4.26.0",
-    "mypy==1.18.2",
-    "pre-commit==4.3.0",
-    "pydantic==2.13.4",
-    "pymarkdownlnt==0.9.39",
-    "pytest==9.0.3",
-    "pytest-cov==7.0.0",
-    "ruff==0.13.0",
-    "setuptools-scm==10.2.1",
+    "git-cliff~=2.13.1",
+    "jsonschema~=4.26.0",
+    "mypy~=2.3.0",
+    "pre-commit~=4.6.1",
+    "pydantic~=2.13.4",
+    "pymarkdownlnt~=0.9.39",
+    "pytest~=9.1.1",
+    "pytest-cov~=7.1.0",
+    "ruff~=0.16.1",
+    "setuptools-scm~=10.2.1",
+    "yamllint~=1.38.0",
 ]
 
 [build-system]
-requires = ["setuptools>=80", "setuptools-scm>=10"]
+requires = ["setuptools~=83.0.0", "setuptools-scm~=10.2.1"]
 build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
