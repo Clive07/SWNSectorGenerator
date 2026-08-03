@@ -1,0 +1,4 @@
+---
+# yamllint doesn't support pyproject.toml (tool limitation), so this file
+# is a deliberate exception to the project's single-config-file rule.
+extends: default

@@ -29,6 +29,10 @@ dev = [
     "yamllint~=1.38.0",
 ]
 
+[tool.pymarkdown]
+plugins.MD013.enabled = true
+plugins.MD013.code-blocks = false
+plugins.MD024.siblings_only = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -41,6 +45,28 @@ addopts = [
     "--cov-fail-under=80",
     "-vv"
 ]
+
+[tool.ruff]
+target-version = "py314"
+extend-exclude = [".idea", "notes", "reports"]
+
+[tool.ruff.lint]
+extend-select = [
+    "D100", "D104",
+    "PTH",
+    "PT",
+    "I",
+    "ANN",
+    "N",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# helpers.py specifically deals with untyped raw YAML data,
+# Any here is a legitimate signal, not a shortcut
+"tests/helpers.py" = ["ANN401"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
