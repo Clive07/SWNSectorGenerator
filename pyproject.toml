@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools~=83.0.0", "setuptools-scm~=10.2.1"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "swn-sector-generator"
 dynamic = ["version"]
@@ -25,9 +29,6 @@ dev = [
     "yamllint~=1.38.0",
 ]
 
-[build-system]
-requires = ["setuptools~=83.0.0", "setuptools-scm~=10.2.1"]
-build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -44,13 +45,13 @@ addopts = [
 [tool.setuptools]
 package-dir = {"" = "src"}
 
-[tool.setuptools_scm]
-version_file = "src/swn_sector_generator/_version.py"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
 [tool.setuptools.package-data]
 swn_sector_generator = [
     "resources/**/*",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+version_file = "src/swn_sector_generator/_version.py"
