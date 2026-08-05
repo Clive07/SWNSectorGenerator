@@ -17,6 +17,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "git-cliff~=2.13.1",
+    "gitlint~=0.19.1",
     "jsonschema~=4.26.0",
     "mypy~=2.3.0",
     "pre-commit~=4.6.1",

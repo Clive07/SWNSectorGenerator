@@ -1,0 +1,9 @@
+# gitlint doesn't support pyproject.toml (tool limitation), so this file
+# is a deliberate exception to the project's single-config-file rule.
+
+[general]
+ignore=body-is-missing
+contrib=contrib-title-conventional-commits
+
+[contrib-title-conventional-commits]
+types=build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test
