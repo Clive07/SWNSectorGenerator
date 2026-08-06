@@ -1,0 +1,3 @@
+# PEP 561 marker file. Its presence tells type checkers (mypy, etc.)
+# that this package ships its own inline type hints and can be
+# trusted directly, rather than being treated as untyped.
