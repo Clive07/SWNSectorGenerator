@@ -7,7 +7,7 @@ data table.
 
 ## Running the tests
 
-```
+```bash
 pytest
 ```
 
@@ -19,16 +19,21 @@ Configuration lives entirely in `pyproject.toml` under
   under `tests/`.
 - `pythonpath = ["tests"]` — lets test files import shared helpers
   (`tests/helpers.py`) as a plain module, from any subfolder under `tests/`.
-- `--cov=src/swn_sector_generator`, `--cov-report=term-missing`,
-  `--cov-fail-under=80` — coverage is measured, missing lines are reported,
-  and the run fails outright if coverage drops below 80%.
+- `--cov-fail-under=80` — coverage is measured, missing lines are
+  reported, and the run fails outright if coverage drops below 80%.
+  The auto-generated `_version.py` is excluded from this measurement
+  — see [Coverage configuration](tooling.md#coverage-configuration).
 - `-vv` — disables pytest's default truncation of large assertion output,
   so a failing test listing many problem entries shows all of them in one
   run rather than requiring a re-run to see the rest.
 
+The full suite also runs automatically before every `git push`, via a
+pre-commit hook — see [tooling.md](tooling.md#pre-commit-hooks)
+for the full pre-commit setup.
+
 ## Directory layout
 
-```
+```text
 tests/
 ├── conftest.py       # fixtures for loading each table's YAML and schema
 ├── helpers.py        # shared validation helper functions
@@ -65,6 +70,11 @@ Adding a new table to any of these generic checks means adding its fixture
 name to a list — no new test logic required. See [Adding a new table](#adding-a-new-table)
 below.
 
+Tests also follow a few ruff-enforced style conventions (parametrize
+formatting, assertion structure) — see
+[Linting conventions enforced](tooling.md#linting-conventions-enforced)
+in tooling.md for the full list.
+
 ## Fixtures (`conftest.py`)
 
 Each table gets two session-scoped fixtures, built by small factory
@@ -88,6 +98,7 @@ regardless of pytest's import mode or folder structure.
 ## What each test file checks
 
 **`test_schema_conformance.py`** — structural correctness:
+
 - The raw table data actually validates against its JSON Schema
   (`jsonschema.validate`).
 - The corresponding `TypedDict`'s fields, required fields, and field types
@@ -102,6 +113,7 @@ regardless of pytest's import mode or folder structure.
 **`test_data_quality.py`** — content correctness, independent of schema
 validity (a value can be the right *type* and still be a data-quality
 problem):
+
 - No null, blank, or empty required fields (`find_invalid_fields`).
 - No leading/trailing whitespace on string values, including inside lists
   (`find_untrimmed_string_fields`).
@@ -126,7 +138,7 @@ Shared functions used across the generic checks above. Notable ones:
   entry in failure messages, falling back from `name`, to `id`, to the
   entry's list index, since either of the first two might itself be
   missing or blank.
-- `_normalize_for_comparison(value)` — case-folds strings for
+- `_normalise_for_comparison(value)` — case-folds strings for
   case-insensitive comparison, leaving non-string values (e.g. `id`
   integers) untouched. Shared by both duplicate-detection functions.
 - `_is_blank_string(value)` — shared by the blank-field and

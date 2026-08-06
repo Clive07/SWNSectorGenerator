@@ -10,8 +10,8 @@ how they relate, and the conventions to follow when adding a new one.
 **YAML file** (`src/swn_sector_generator/resources/tables/<name>.yaml`) —
 the actual data. A list of records, e.g. one entry per world tag.
 
-**JSON Schema** (`src/swn_sector_generator/resources/tables/<name>.schema.json`) —
-the runtime source of truth for what a valid record looks like: which
+**JSON Schema** (`schemas/<name>.schema.json`)
+— the runtime source of truth for what a valid record looks like: which
 fields exist, which are required, and what type each one must be. Also
 used directly by PyCharm to validate the YAML file while editing it.
 
@@ -88,22 +88,29 @@ When the migration does happen, code using dict-style access
 (`world_tag.name`), since a `TypedDict` is still a plain `dict` at
 runtime while a Pydantic model is a real object. The `test_schema_conformance.py`
 drift-guard tests should keep working with minimal changes at that point,
-since `TypeAdapter` accepts Pydantic models as readily as `TypedDict`s —
-and Pydantic models can generate their own JSON Schema directly via
+since `TypeAdapter` accepts Pydantic models as readily as TypedDicts. And,
+Pydantic models can generate their own JSON Schema directly via
 `model_json_schema()`, which could eventually replace hand-maintaining
 the schema file at all, removing the drift risk rather than just
 detecting it.
 
+## Adding a new entry to an existing table
+
+Just add the record to the table's `.yaml` file, following the existing
+entries' shape. These files are linted with yamllint's default
+settings — keep lines under 80 characters (using a folded block
+scalar, `>-`, for long string values) and use LF line endings.
+
 ## Adding a new table
 
-See [Adding a new table](testing.md#adding-a-new-table) in `docs/testing.md` for the 
-test-side checklist.
-On the data-modelling side, a new table needs:
+See [Adding a new table](testing.md#adding-a-new-table) in `docs/testing.md` for
+the test-side checklist. On the data-modelling side, a new table needs:
 
 1. `src/swn_sector_generator/resources/tables/<name>.yaml` — the data.
-2. `src/swn_sector_generator/schemas/<name>.schema.json` — its
-   schema, following the same conventions as `world_tags.schema.json`
-   (`type: array`, `items` describing one record, `additionalProperties:
-   false`, explicit `required`).
-3. `src/swn_sector_generator/models/<name>.py` — a `TypedDict` describing
-   the same shape.
+2. `schemas/schemas/<name>.schema.json` — its schema, following the same
+   conventions as `world_tags.schema.json` (`type: array`, `items`
+   describing one record, `additionalProperties: false`, explicit `required`).
+3. `src/swn_sector_generator/models/<name>.py` — a `TypedDict`
+   describing the same shape.
+
+The new YAML file follows the same yamllint conventions noted above.
