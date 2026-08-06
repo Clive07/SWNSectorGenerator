@@ -9,9 +9,9 @@ maintain desired structure
 from io import StringIO
 from pathlib import Path
 
-# Ensure you've run pip install ruamel.yaml
+# Ensure you've run pip install ruamel.yaml. Not apart of dev dependencies since it is
+# one off runs and possibly never needed after initial use
 from ruamel.yaml import YAML
-
 
 PROJECT_ROOT = Path(__file__).parent.parent
 FILE_PATH = PROJECT_ROOT / "src" / "swn_sector_generator" / "resources" / "tables"

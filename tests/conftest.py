@@ -3,13 +3,14 @@ Fixtures used by the test files.
 """
 
 import json
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
+from typing import cast
 
 import pytest
 import yaml
 
-from swn_sector_generator.loading import RawTable, RawSchema
+from swn_sector_generator.loading import RawSchema, RawTable
 
 PROJECT_DIR = Path(__file__).parent.parent
 TABLES_DIR = PROJECT_DIR / "src" / "swn_sector_generator" / "resources" / "tables"
@@ -27,7 +28,7 @@ def _load_yaml_table(file_path: Path) -> RawTable:
         The raw list of records parsed from the file.
     """
     with file_path.open(mode="r", encoding="utf-8") as file:
-        return yaml.safe_load(file)
+        return cast(RawTable, yaml.safe_load(file))
 
 
 def _load_json_schema(file_path: Path) -> RawSchema:
@@ -41,7 +42,7 @@ def _load_json_schema(file_path: Path) -> RawSchema:
         The parsed JSON Schema document.
     """
     with file_path.open(mode="r", encoding="utf-8") as file:
-        return json.load(file)
+        return cast(RawSchema, json.load(file))
 
 
 def _make_table_fixture(table_name: str) -> Callable[[], RawTable]:

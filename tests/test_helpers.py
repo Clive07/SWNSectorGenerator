@@ -3,36 +3,38 @@ Tests for the shared validation helper functions in helpers.py.
 """
 
 from helpers import (
-    _normalize_for_comparison,
     _find_blank_string_fields,
     _find_invalid_list_fields,
     _find_null_fields,
     _is_blank_string,
+    _normalise_for_comparison,
     describe_entry,
-    find_invalid_fields,
     find_duplicate_field_values,
     find_duplicate_list_items,
-    find_untrimmed_string_fields,
     find_id_range_gaps,
+    find_invalid_fields,
+    find_untrimmed_string_fields,
 )
 
+from swn_sector_generator.loading import RawTable
 
-def test_normalize_for_comparison_casefolds_strings() -> None:
+
+def test_normalise_for_comparison_casefolds_strings() -> None:
     """
     Strings should be case-folded for comparison.
     """
-    assert _normalize_for_comparison("Feral World") == "feral world"
-    assert _normalize_for_comparison("FERAL WORLD") == "feral world"
-    assert _normalize_for_comparison("feral world") == "feral world"
+    assert _normalise_for_comparison("Feral World") == "feral world"
+    assert _normalise_for_comparison("FERAL WORLD") == "feral world"
+    assert _normalise_for_comparison("feral world") == "feral world"
 
 
-def test_normalize_for_comparison_leaves_non_strings_unchanged() -> None:
+def test_normalise_for_comparison_leaves_non_strings_unchanged() -> None:
     """
     Non-string values should be returned as-is, since case doesn't apply to them.
     """
-    assert _normalize_for_comparison(7) == 7
-    assert _normalize_for_comparison(None) is None
-    assert _normalize_for_comparison([1, 2]) == [1, 2]
+    assert _normalise_for_comparison(7) == 7
+    assert _normalise_for_comparison(None) is None
+    assert _normalise_for_comparison([1, 2]) == [1, 2]
 
 
 def test_is_blank_string_detects_blank_and_whitespace_only() -> None:
@@ -315,7 +317,7 @@ def test_find_id_range_gaps_ignores_non_integer_ids() -> None:
     """
     Noninteger id values should be ignored, not counted as valid or invalid.
     """
-    table = [{"id": 1}, {"id": "two"}, {"id": 3}]
+    table: RawTable = [{"id": 1}, {"id": "two"}, {"id": 3}]
     assert find_id_range_gaps(table) == {"missing": [2]}
 
 
