@@ -4,15 +4,15 @@ meaningful value (null, blank, or empty), regardless of schema.
 """
 
 import pytest
-
 from helpers import (
     describe_entry,
-    find_invalid_fields,
     find_duplicate_field_values,
     find_duplicate_list_items,
-    find_untrimmed_string_fields,
     find_id_range_gaps,
+    find_invalid_fields,
+    find_untrimmed_string_fields,
 )
+
 from swn_sector_generator.loading import RawTable
 
 TABLE_FIXTURES = [
@@ -50,7 +50,7 @@ def test_table_has_no_invalid_fields(
     )
 
 
-@pytest.mark.parametrize("table_fixture, identity_fields", TABLE_IDENTITY_FIELDS)
+@pytest.mark.parametrize(("table_fixture", "identity_fields"), TABLE_IDENTITY_FIELDS)
 def test_table_has_no_duplicate_identity_values(
     table_fixture: str, identity_fields: list[str], request: pytest.FixtureRequest
 ) -> None:

@@ -1,0 +1,78 @@
+---
+# Run once after cloning:
+#   pre-commit install -t pre-commit -t pre-push -t commit-msg
+# This wires up all three hook stages used by this config:
+#   pre-commit  -> lint checks on every `git commit`
+#   commit-msg  -> gitlint validates the commit message itself
+#   pre-push    -> full pytest suite runs before `git push`
+repos:
+  # pre-commit stage (runs on every `git commit`, before the message is entered)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.3.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - "jsonschema"
+          - "pydantic"
+          - "pytest"
+          - "PyYAML"
+          - "types-jsonschema"
+          - "types-PyYAML"
+        stages: [pre-commit]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.py$'
+        stages: [pre-commit]
+      - id: end-of-file-fixer
+        exclude: '\.py$'
+        stages: [pre-commit]
+      - id: check-json
+        stages: [pre-commit]
+      - id: check-toml
+        stages: [pre-commit]
+      - id: check-merge-conflict
+        stages: [pre-commit]
+
+  - repo: https://github.com/jackdewinter/pymarkdown
+    rev: v0.9.39
+    hooks:
+      - id: pymarkdown
+        args: [scan]
+        stages: [pre-commit]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.1
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        stages: [pre-commit]
+      - id: ruff-format
+        types_or: [python, pyi, jupyter, markdown]
+        stages: [pre-commit]
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        stages: [pre-commit]
+
+  # commit-msg stage (validates the message after it's written)
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+      - id: gitlint
+        stages: [commit-msg]
+
+  # pre-push stage (runs before `git push`)
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        files: '^(src/|tests/|schemas/|pyproject\.toml$)'
+        stages: [pre-push]

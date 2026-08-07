@@ -4,7 +4,7 @@ Shared helper functions for validating raw table data across test files.
 
 from typing import Any
 
-from swn_sector_generator.loading import RawTable, RawEntry
+from swn_sector_generator.loading import RawEntry, RawTable
 
 
 def _is_blank_string(value: Any) -> bool:
@@ -69,7 +69,7 @@ def _find_invalid_list_fields(entry: RawEntry) -> list[str]:
     return blank_fields
 
 
-def _normalize_for_comparison(value: Any) -> Any:
+def _normalise_for_comparison(value: Any) -> Any:
     """
     Normalise a value for case-insensitive comparison.
 
@@ -157,7 +157,7 @@ def find_duplicate_field_values(
         value = entry.get(field)
         if value is None:
             continue
-        seen.setdefault(_normalize_for_comparison(value), []).append((value, index))
+        seen.setdefault(_normalise_for_comparison(value), []).append((value, index))
 
     return {key: entries for key, entries in seen.items() if len(entries) > 1}
 
@@ -190,15 +190,15 @@ def find_duplicate_list_items(entry: RawEntry) -> dict[str, list[Any]]:
             continue
         real_items = [item for item in value if item is not None]
 
-        seen_by_normalized: dict[Any, list[Any]] = {}
+        seen_by_normalised: dict[Any, list[Any]] = {}
         for item in real_items:
-            seen_by_normalized.setdefault(_normalize_for_comparison(item), []).append(
+            seen_by_normalised.setdefault(_normalise_for_comparison(item), []).append(
                 item
             )
 
         duplicated_originals = [
             original
-            for originals in seen_by_normalized.values()
+            for originals in seen_by_normalised.values()
             if len(originals) > 1
             for original in dict.fromkeys(originals)
         ]
@@ -224,11 +224,12 @@ def find_untrimmed_string_fields(entry: RawEntry) -> list[str]:
 
     untrimmed_fields = []
     for key, value in entry.items():
-        if isinstance(value, str) and value.strip() and value != value.strip():
-            untrimmed_fields.append(key)
-        elif isinstance(value, list) and any(
-            isinstance(item, str) and item.strip() and item != item.strip()
-            for item in value
+        if (isinstance(value, str) and value.strip() and value != value.strip()) or (
+            isinstance(value, list)
+            and any(
+                isinstance(item, str) and item.strip() and item != item.strip()
+                for item in value
+            )
         ):
             untrimmed_fields.append(key)
 
@@ -254,7 +255,7 @@ def find_id_range_gaps(table: RawTable) -> dict[str, list[int]]:
     """
     expected_ids = set(range(1, len(table) + 1))
     actual_ids = {
-        entry.get("id") for entry in table if isinstance(entry.get("id"), int)
+        entry_id for entry in table if isinstance(entry_id := entry.get("id"), int)
     }
 
     issues = {}

@@ -37,11 +37,11 @@ def _describe_schema_type(schema_fragment: dict[str, Any]) -> str:
     if type_name == "array":
         item_type = schema_fragment.get("items", {}).get("type", "unknown")
         return f"array of {item_type}"
-    return type_name
+    return str(type_name)
 
 
 @pytest.mark.parametrize(
-    "table_fixture, schema_fixture",
+    ("table_fixture", "schema_fixture"),
     [(table, schema) for table, schema, _ in TABLE_DEFINITIONS],
 )
 def test_table_schema_conforms_to_schema(
@@ -63,7 +63,7 @@ def test_table_schema_conforms_to_schema(
 
 
 @pytest.mark.parametrize(
-    "typed_dict, schema_fixture",
+    ("typed_dict", "schema_fixture"),
     [(typed_dict, schema) for _, schema, typed_dict in TABLE_DEFINITIONS],
 )
 def test_typed_dict_properties_match_schema(
@@ -88,16 +88,16 @@ def test_typed_dict_properties_match_schema(
     extra_in_typed_dict = generated_properties - schema_properties
     extra_in_schema = schema_properties - generated_properties
 
-    assert not extra_in_typed_dict and not extra_in_schema, (
-        f"{typed_dict.__name__} fields don't match schema properties. "
-        f"Extra in {typed_dict.__name__}: {extra_in_typed_dict or 'none'}. "
-        f"Extra in schema: {extra_in_schema or 'none'}. "
-        f"{typed_dict.__name__} properties should align with schema."
+    assert not extra_in_typed_dict, (
+        f"{typed_dict.__name__} has properties not in schema: {extra_in_typed_dict}"
+    )
+    assert not extra_in_schema, (
+        f"Schema has properties missing from {typed_dict.__name__}: {extra_in_schema}"
     )
 
 
 @pytest.mark.parametrize(
-    "typed_dict, schema_fixture",
+    ("typed_dict", "schema_fixture"),
     [(typed_dict, schema) for _, schema, typed_dict in TABLE_DEFINITIONS],
 )
 def test_typed_dict_required_fields_match_schema(
@@ -122,16 +122,16 @@ def test_typed_dict_required_fields_match_schema(
     extra_in_typed_dict = generated_required - schema_required
     extra_in_schema = schema_required - generated_required
 
-    assert not extra_in_typed_dict and not extra_in_schema, (
-        f"{typed_dict.__name__} required fields don't match schema required. "
-        f"Extra in {typed_dict.__name__}: {extra_in_typed_dict or 'none'}. "
-        f"Extra in schema: {extra_in_schema or 'none'}. "
-        f"{typed_dict.__name__} required fields should align with schema."
+    assert not extra_in_typed_dict, (
+        f"{typed_dict.__name__} has fields not in schema: {extra_in_typed_dict}"
+    )
+    assert not extra_in_schema, (
+        f"Schema has required fields missing from {typed_dict.__name__}: {extra_in_schema}"
     )
 
 
 @pytest.mark.parametrize(
-    "typed_dict, schema_fixture",
+    ("typed_dict", "schema_fixture"),
     [(typed_dict, schema) for _, schema, typed_dict in TABLE_DEFINITIONS],
 )
 def test_typed_dict_field_types_match_schema(

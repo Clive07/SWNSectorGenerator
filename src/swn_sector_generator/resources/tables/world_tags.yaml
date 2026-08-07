@@ -1,12 +1,13 @@
+---
 - id: 1
   name: Abandoned Colony
   description: >-
-    The world once hosted a colony, whether human or otherwise, until some crisis
-    or natural disaster drove the inhabitants away or killed them off. The colony
-    might have been mercantile in nature, an expedition to extract valuable local
-    resources, or it might have been a reclusive cabal of zealots. The remains of
-    the colony are usually in ruins, and might still be dangerous from the aftermath
-    of whatever destroyed it in the first place.
+    The world once hosted a colony, whether human or otherwise, until some
+    crisis or natural disaster drove the inhabitants away or killed them off.
+    The colony might have been mercantile in nature, an expedition to extract
+    valuable local resources, or it might have been a reclusive cabal of
+    zealots. The remains of the colony are usually in ruins, and might still be
+    dangerous from the aftermath of whatever destroyed it in the first place.
   enemies:
     - Crazed survivors
     - Ruthless plunderers of the ruins
@@ -31,10 +32,11 @@
 - id: 2
   name: Alien Ruins
   description: >-
-    The world has significant alien ruins present. The locals may or may not permit
-    others to investigate the ruins, and may make it difficult to remove any objects
-    of value without substantial payment. Any surviving ruins with worthwhile salvage
-    almost certainly have some defense or hazard to explain their unplundered state.
+    The world has significant alien ruins present. The locals may or may not
+    permit others to investigate the ruins, and may make it difficult to remove
+    any objects of value without substantial payment. Any surviving ruins with
+    worthwhile salvage almost certainly have some defense or hazard to explain
+    their unplundered state.
   enemies:
     - Customs inspector
     - Worshipper of the ruins
@@ -314,7 +316,9 @@
     - Escapee from death seeking outside help
     - Reformer trying to change local mores
   complications:
-    - Radiation or local diseases ensure all locals die before twenty-five years of age
+    - >-
+      Radiation or local diseases ensure all locals die before
+      twenty-five years of age
     - Tech ensures that death is just an annoyance
     - Locals are totally convinced of a blissful afterlife
   things:
@@ -466,8 +470,12 @@
     - Precognitive economist
   complications:
     - The pretech planning computers are breaking down
-    - The planning only works because the locals have been mentally or physically altered
-    - The planning computers can't handle the increasing population within the system
+    - >-
+      The planning only works because the locals have been mentally
+      or physically altered
+    - >-
+      The planning computers can't handle the increasing population
+      within the system
   things:
     - Planning node computer
     - Wildly destabilizing commodity that can't be factored into plans
@@ -496,7 +504,9 @@
   complications:
     - The powerful and dangerous come here often for cutting-edge implants
     - The cyber has some universal negative side-effect
-    - Cyber and those implanted with it are forbidden to leave the planet as a tech security measure
+    - >-
+      Cyber and those implanted with it are forbidden to leave the planet
+      as a tech security measure
   things:
     - Unique prototype cyber implant
     - Secret research files
@@ -505,7 +515,9 @@
   places:
     - Grimy slum chop-shop
     - Bloody lair of implant rippers
-    - Stark plaza where everyone is seeing things through their augmented-reality cyber
+    - >-
+      Stark plaza where everyone is seeing things through their
+      augmented-reality cyber
 
 - id: 18
   name: Cyclical Doom
@@ -534,7 +546,9 @@
   places:
     - Lethally-defended vault of forgotten secrets
     - Starport crowded with panicked refugees
-    - Town existing in the shadow of some monstrous monument to a former upheaval
+    - >-
+      Town existing in the shadow of some monstrous monument to a
+      former upheaval
 
 - id: 19
   name: Desert World
@@ -577,7 +591,9 @@
   enemies:
     - Crazed prophet of a false salvation
     - Ruthless leader seeking to flee with their treasures
-    - Cynical ship captain selling a one-way trip into hard vacuum as escape to another world
+    - >-
+      Cynical ship captain selling a one-way trip into hard vacuum as
+      escape to another world
   friends:
     - Appealing waif or family head seeking escape
     - Offworld relief coordinator
@@ -585,7 +601,9 @@
   complications:
     - The doom is false or won't actually kill everyone
     - The doom was intentionally triggered by someone
-    - Mass escape is possible if warring groups can somehow be brought to cooperate
+    - >-
+      Mass escape is possible if warring groups can somehow be
+      brought to cooperate
   things:
     - Clearance for a ship to leave the planet
     - A cache of priceless cultural artifacts
@@ -643,7 +661,9 @@
   complications:
     - The altered cultists look human
     - The locals are terrified of any unusual physical appearance
-    - The genetic modifications- and drawbacks- are contagious with long exposure
+    - >-
+      The genetic modifications- and drawbacks- are contagious with
+      long exposure
   things:
     - Serum that induces the alteration
     - Elixir that reverses the alteration
@@ -700,7 +720,9 @@
     - Refugee from the overthrown colonial enclave
   complications:
     - The hegemon's rule was enlightened and fair
-    - It collapsed due to its own internal strife rather than external resistance
+    - >-
+      It collapsed due to its own internal strife rather than
+      external resistance
     - It pretends that nothing has happened to its power
     - It's been counter-colonized by vengeful outsiders
   things:
@@ -868,7 +890,9 @@
     or the world's sun never pierces its thick banks of clouds.
   enemies:
     - Criminal using the weather as a cover
-    - Weather cultists convinced the offworlders are responsible for some disaster
+    - >-
+      Weather cultists convinced the offworlders are responsible for
+      some disaster
     - Native predators dependent on the weather
   friends:
     - Meteorological researcher
@@ -956,7 +980,9 @@
   enemies:
     - Local planning to sacrifice the PCs for the work
     - Local who thinks the PCs threaten the work
-    - Obsessive zealot ready to destroy someone or something important to the PCs for the sake of the work
+    - >-
+      Obsessive zealot ready to destroy someone or something important to the
+      PCs for the sake of the work
   friends:
     - Outsider studying the work
     - Local with a more temperate attitude
@@ -1199,7 +1225,9 @@
     - Curious longevity researcher
     - Thrill-seeking local
   complications:
-    - Immortality requires doing something that outsiders can't or won't willingly do
+    - >-
+      Immortality requires doing something that outsiders can't or won't
+      willingly do
     - The immortality ends if they leave the world
     - Death is the punishment for even minor crimes
     - Immortals must die or go offworld after a certain span
@@ -1324,7 +1352,9 @@
   complications:
     - The test is totally unrelated to necessary governing skills
     - The test was very pertinent in the past but tech or culture has changed
-    - The test is for a skill that is vital to maintaining society but irrelevant to day-to-day governance
+    - >-
+      The test is for a skill that is vital to maintaining society but
+      irrelevant to day-to-day governance
     - The test is a sham and passage is based on wealth or influence
   things:
     - Answer key to the next test
@@ -1333,7 +1363,9 @@
   places:
     - Massive structure full of test-taking cubicles
     - School filled with desperate students
-    - Ornate government building decorated with scholarly quotes and academic images
+    - >-
+      Ornate government building decorated with scholarly quotes and
+      academic images
 
 - id: 46
   name: Mandate Base
@@ -1353,9 +1385,13 @@
     - Missionary for advanced Mandate tech
     - Outsider seeking lost data from Mandate records
   complications:
-    - The monitoring system forces the locals to behave in aggressive ways toward "rebel" worlds
+    - >-
+      The monitoring system forces the locals to behave in aggressive
+      ways toward "rebel" worlds
     - The monitoring system severely hinders offworld use of their tech
-    - The original colonists are all dead and have been replaced by outsiders who don't understand all the details
+    - >-
+      The original colonists are all dead and have been replaced by
+      outsiders who don't understand all the details
   things:
     - Ultra-advanced pretech
     - Mandate military gear
@@ -1376,14 +1412,18 @@
   enemies:
     - Ruthless ghoul leader
     - Chieftain of a ravenous tribe
-    - Sophisticated degenerate preaching the splendid authenticity of cannibalism
+    - >-
+      Sophisticated degenerate preaching the splendid authenticity
+      of cannibalism
   friends:
     - Sympathetic local fleeing the fork
     - Escapee from a pharmaceutical rendering plant
     - Outsider chosen for dinner
     - Reformer seeking to break the custom or its necessity
   complications:
-    - Local food or environmental conditions make human consumption grimly necessary
+    - >-
+      Local food or environmental conditions make human consumption
+      grimly necessary
     - The locals farm human beings
     - Outsiders are expected to join the custom
     - The custom is totally unnecessary but jealously maintained by the people
@@ -1416,7 +1456,9 @@
   complications:
     - The megacorps are the only source of something vital to life on this world
     - An autonomous Mandate system acts to punish excessively overt violence
-    - The megacorps are struggling against much more horrible national governments
+    - >-
+      The megacorps are struggling against much more horrible
+      national governments
   things:
     - Blackmail on a megacorp exec
     - Keycodes to critical corp secrets
@@ -1442,9 +1484,13 @@
     - Harried leader of enfeebled national army
     - Offworlder trying to hire help for a noble cause
   complications:
-    - The mercenaries are all that stand between the locals and a hungry imperial power
+    - >-
+      The mercenaries are all that stand between the locals and a
+      hungry imperial power
     - The mercenaries are remnants of a former official army
-    - The mercenaries hardly ever actually fight as compared to taking bribes to walk away
+    - >-
+      The mercenaries hardly ever actually fight as compared to taking
+      bribes to walk away
   things:
     - Lost mercenary payroll shipment
     - Forbidden military tech
@@ -1475,7 +1521,9 @@
   complications:
     - The locals carry a disease harmless to them and lethal to outsiders
     - The locals hide dark purposes from offworlders
-    - The locals have something desperately needed but won't bring it into the treaty port
+    - >-
+      The locals have something desperately needed but won't bring it
+      into the treaty port
   things:
     - Contraband trade goods
     - Security perimeter codes
@@ -1562,9 +1610,13 @@
     - Dreamer imagining a stable life
     - Offworlder enamored of the life
   complications:
-    - An irresistibly lethal swarm of native life forces locals to move regularly
+    - >-
+      An irresistibly lethal swarm of native life forces locals to
+      move regularly
     - Ancient defense systems destroy too-long-stationary communities
-    - Local chemical patches require careful balancing of exposure times to avoid side effects
+    - >-
+      Local chemical patches require careful balancing of exposure times to
+      avoid side effects
   things:
     - Cache of rare and precious resource
     - Plunder seized by a tribal raid
@@ -1592,7 +1644,9 @@
     - Sea hermit
     - Sapient native life
   complications:
-    - The liquid flux confuses grav engines too badly for them to function on this world
+    - >-
+      The liquid flux confuses grav engines too badly for them to function
+      on this world
     - Sea is corrosive or toxic
     - The seas are wracked by regular storms
   things:
@@ -1754,7 +1808,9 @@
     - Native seeking a more meaningful life elsewhere
     - Offworld entertainer looking for training here
   complications:
-    - A deeply repugnant pleasure is offered here by a culture that sees nothing wrong with it
+    - >-
+      A deeply repugnant pleasure is offered here by a culture that sees
+      nothing wrong with it
     - Certain pleasures here are dangerously addictive
     - The prices here can involve enslavement or death
     - The world has been seized and exploited by an imperial power
@@ -1854,7 +1910,9 @@
     - Reluctant student
     - Roving Preceptor Adept
   complications:
-    - The local Archive has taken a very religious and mystical attitude toward their teaching
+    - >-
+      The local Archive has taken a very religious and mystical attitude
+      toward their teaching
     - The Archive has maintained some replicable pretech science
     - The Archive has been corrupted and their teaching is incorrect
   things:
@@ -1917,7 +1975,9 @@
     - Planetary frontiersman
     - Xenoresearcher
   complications:
-    - The alien numbers are huge and can overwhelm the humans whenever they so choose
+    - >-
+      The alien numbers are huge and can overwhelm the humans whenever
+      they so choose
     - One group is trying to use the other to kill their political opponents
     - The aliens are incomprehensibly strange
     - One side commits an atrocity
@@ -2014,7 +2074,9 @@
   complications:
     - Psychic potential is much more common here
     - Some tech is mistaken as psitech
-    - Natives believe certain rituals and customs can protect them from psychic powers
+    - >-
+      Natives believe certain rituals and customs can protect them from
+      psychic powers
   things:
     - Hidden psitech cache
     - Possessions of convicted psychics
@@ -2044,7 +2106,9 @@
     - Native rebel
     - Offworld employer seeking psychics
   complications:
-    - The psychic training is imperfect, and the psychics all show significant mental illness
+    - >-
+      The psychic training is imperfect, and the psychics all show
+      significant mental illness
     - The psychics have developed a unique discipline
     - The will of a psychic is law
     - Psychics in the party are forcibly kidnapped for "enlightening"
@@ -2166,7 +2230,9 @@
     - Offworld ambassador
     - Foreign spy
   complications:
-    - The hegemon's influence is all that's keeping a murderous war from breaking out on nearby worlds
+    - >-
+      The hegemon's influence is all that's keeping a murderous war from
+      breaking out on nearby worlds
     - The hegemon is decaying and losing its control
     - The government is riddled with spies
     - The hegemon is genuinely benign
@@ -2256,14 +2322,18 @@
     - Blood-drenched secret police chief
     - Hostile foreign agent seeking further turmoil
   friends:
-    - Sympathetic victim accused of revolutionary sympathies or government collaboration
+    - >-
+      Sympathetic victim accused of revolutionary sympathies or
+      government collaboration
     - Revolutionary or state agent who now repents
     - Agent of a neutral power that wants peace
   complications:
     - The revolutionaries actually do seem likely to put in better rulers
     - The revolutionaries are client groups that got out of hand
     - The revolutionaries are clearly much worse than the government
-    - The revolutionaries have real ideals beyond power and merely pretend to ideology
+    - >-
+      The revolutionaries have real ideals beyond power and merely pretend
+      to ideology
   things:
     - List of secret revolutionary sympathizers
     - Proof of rebel hypocrisy
@@ -2294,7 +2364,9 @@
     - The cultural patterns are enforced by technological aids
     - The culture is run by a secret cabal of manipulators
     - The culture has explicit religious sanction
-    - The culture evolved due to important necessities that have since been forgotten
+    - >-
+      The culture evolved due to important necessities that have since
+      been forgotten
   things:
     - Precious traditional regalia
     - Peasant tribute
@@ -2388,7 +2460,9 @@
     - The robots are only partially controlled
     - The robots are salvaged and originally meant for a much darker use
     - The robots require a rare material that the locals fight over
-    - The robots require the planetary specific infrastructure so cannot be exported
+    - ->
+      The robots require the planetary specific infrastructure so cannot
+      be exported
   things:
     - Prototype robot
     - Secret robot override codes
@@ -2544,7 +2618,9 @@
   complications:
     - The earthquakes are caused by malfunctioning pretech terraformers
     - They're caused by alien technology
-    - They're restrained by alien technology that is being plundered by offworlders
+    - ->
+      They're restrained by alien technology that is being
+      plundered by offworlders
     - They're used to generate enormous amounts of energy
   things:
     - Earthquake generator
@@ -2609,9 +2685,13 @@
     - Local going through the motions of serving a now-irrelevant role
   complications:
     - A massive war discredited all the old values
-    - Outside powers are working to erode societal confidence for their own benefit
+    - >-
+      Outside powers are working to erode societal confidence for their
+      own benefit
     - A local power is profiting greatly from the despair
-    - The old ways were meant to aid survival on this world and their passing is causing many new woes
+    - >-
+      The old ways were meant to aid survival on this world and their passing is
+      causing many new woes
   things:
     - Relic that would inspire a renaissance
     - Art that would inspire new ideas
@@ -2708,7 +2788,9 @@
   complications:
     - The engines produced too much of something instead of too little
     - The engines were hijacked by aliens with different preferences
-    - It was discovered that an Earth-like environment would eventually cause a catastrophic disaster
+    - >-
+      It was discovered that an Earth-like environment would eventually cause a
+      catastrophic disaster
   things:
     - Parts to repair or restore the engines
     - Lootable pretech fragments
@@ -3043,7 +3125,9 @@
   complications:
     - The natives are symptomless carriers of a contagious and dangerous disease
     - The natives are exceptionally vulnerable to offworld diseases
-    - The natives require elaborate purification rituals after speaking to an offworlder or touching them
+    - >-
+      The natives require elaborate purification rituals after speaking to an
+      offworlder or touching them
     - The local ruler has forbidden any mercantile dealings with outworlders
   things:
     - Jealously-guarded precious relic
